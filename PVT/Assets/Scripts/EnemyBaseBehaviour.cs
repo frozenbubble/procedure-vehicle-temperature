@@ -35,6 +35,12 @@ public class EnemyBaseBehaviour : MonoBehaviour
             currentHp -= bulletBeha.damage;
             Destroy(bulletBeha.gameObject);
         }
+
+        var playerBeha = other.GetComponent<PlayerController>();
+
+        if (playerBeha != null) {
+            playerBeha.DamageMe();
+        }
         
     }
 
