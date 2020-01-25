@@ -6,6 +6,7 @@ public class BulletBehaviour : MonoBehaviour
 {
 
     public Vector3 speed = Vector3.zero;
+    public int damage = 1;
 
 
     // Start is called before the first frame update
