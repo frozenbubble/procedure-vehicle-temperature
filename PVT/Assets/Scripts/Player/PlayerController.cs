@@ -28,8 +28,8 @@ public class PlayerController : MonoBehaviour
     private float speed = 15.0f;
 
     private float currentShootingCooldown = 0.0f;
-    private float shootingCooldown = 0.01f;
-    private Vector3 bulletSpeed = new Vector3(0.0f, 0.7f, 0.0f);
+    private float shootingCooldown = 0.1f;
+    private Vector3 bulletSpeed = new Vector3(0.0f, 0.1f, 0.0f);
 
 
     // Start is called before the first frame update
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
             // sidebullets
 
-            for (int i = 1; i < 4; i++) {
+            for (int i = 1; i < 2; i++) {
                 var bullet2 = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
                 var bulletBehaviour2 = bullet2.GetComponent<BulletBehaviour>();
                 bulletBehaviour2.speed = Quaternion.Euler(0, 0, 6 * i) * bulletSpeed;
