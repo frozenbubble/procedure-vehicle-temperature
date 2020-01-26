@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         mPrevInputs = new bool[(int)KeyInput.Count];
 
         renderer = GetComponent<MeshRenderer>();
-        retryText.enabled = false;
+        //retryText.enabled = false;
     }
 
     // Update is called once per frame

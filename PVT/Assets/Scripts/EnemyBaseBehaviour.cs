@@ -8,6 +8,13 @@ public class EnemyBaseBehaviour : MonoBehaviour
     public int maxHp = 50;
     public int currentHp = 0;
 
+    private int targetWaypoint = 0;
+
+    [SerializeField]
+    private float speed = 3f;
+
+    public List<Transform> Path { get; set; }
+
     void Start()
     {
         currentHp = maxHp;
@@ -19,11 +26,35 @@ public class EnemyBaseBehaviour : MonoBehaviour
         if (currentHp <= 0) {
             KillMe();
         }
+
+        if (Path != null)
+        {
+            MoveAlongPath();
+        }
     }
 
     private void KillMe()
     {
         Destroy(transform.gameObject);
+    }
+
+    private void MoveAlongPath()
+    {
+        if (targetWaypoint > Path.Count - 1)
+        {
+            KillMe();
+        }
+        else
+        {
+            var target = Path[targetWaypoint].position;
+            float delta = speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, target, delta);
+
+            if (transform.position == target)
+            {
+                targetWaypoint++;
+            }
+        }
     }
 
 
